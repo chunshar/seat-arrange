@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>座席表作成アプリ</title>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="app-header">
+    <h1>座席表作成アプリ</h1>
+    <div class="header-actions">
+      <span class="table-counter" id="tableCounter">テーブル: 0/6</span>
+      <button type="button" id="resetVenueBtn" class="btn btn-danger">会場をリセット</button>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <button type="button" id="addTableBtn" class="btn btn-primary">＋ テーブルを追加</button>
+  </div>
+
+  <main>
+    <div id="venue" class="venue">
+      <p class="venue-empty" id="venueEmpty">まだテーブルがありません。「＋ テーブルを追加」から作成してください。</p>
+    </div>
+  </main>
+
+  <!-- テーブル追加モーダル -->
+  <div class="modal-overlay" id="tableModalOverlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="tableModalTitle">
+      <h2 id="tableModalTitle">テーブルを追加</h2>
+      <form id="tableForm">
+        <label class="field">
+          <span>テーブル名</span>
+          <input type="text" id="tableNameInput" placeholder="例: テーブル1" maxlength="30">
+        </label>
+        <label class="field">
+          <span>初期の椅子数（0〜8）</span>
+          <input type="number" id="tableSeatCountInput" min="0" max="8" value="4">
+        </label>
+        <p class="field-error" id="tableFormError" hidden></p>
+        <div class="modal-actions">
+          <button type="button" class="btn" id="tableModalCancelBtn">キャンセル</button>
+          <button type="submit" class="btn btn-primary">追加する</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- メンバー登録/編集モーダル -->
+  <div class="modal-overlay" id="memberModalOverlay" hidden>
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="memberModalTitle">
+      <h2 id="memberModalTitle">メンバーを登録</h2>
+      <form id="memberForm">
+        <label class="field">
+          <span>名前 <em>必須</em></span>
+          <input type="text" id="memberNameInput" placeholder="例: 山田 太郎" maxlength="30">
+        </label>
+        <label class="field">
+          <span>X の ID（任意）</span>
+          <input type="text" id="memberXIdInput" placeholder="例: @example">
+        </label>
+        <p class="field-error" id="memberFormError" hidden></p>
+        <div class="modal-actions">
+          <button type="button" class="btn btn-danger" id="memberUnassignBtn" hidden>割り当て解除</button>
+          <button type="button" class="btn" id="memberModalCancelBtn">キャンセル</button>
+          <button type="submit" class="btn btn-primary">保存する</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="js/state.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
