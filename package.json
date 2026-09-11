@@ -1,0 +1,10 @@
+{
+  "name": "seat-arrange",
+  "version": "1.0.0",
+  "description": "会場にテーブルと椅子を配置し、座席表を作成するシンプルな Web アプリケーション",
+  "private": true,
+  "scripts": {
+    "test": "node test/logic.test.js"
+  },
+  "license": "UNLICENSED"
+}
